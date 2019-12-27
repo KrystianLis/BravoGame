@@ -8,16 +8,23 @@ namespace BravoGame
 {
     public class Unit : Basic2d
     {
-        public float Speed;
+        public float Speed, hitDistance;
+        public bool Dead;
 
         public Unit(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
             Speed = 2.0f;
+            hitDistance = 35.0f;
         }
 
-        public override void Update()
+        public virtual void GetHit()
         {
-            base.Update();
+            Dead = true;
+        }
+
+        public override void Update(Vector2 offset)
+        {
+            base.Update(offset);
         }
 
         public override void Draw(Vector2 offset)

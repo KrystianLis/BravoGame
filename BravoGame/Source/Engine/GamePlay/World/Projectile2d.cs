@@ -40,6 +40,16 @@ namespace BravoGame
 
         public virtual bool HitSomething(List<Unit> units)
         {
+            for (int i = 0; i < units.Count; i++)
+            {
+                if(Globals.GetDistance(Position, units[i].Position) < units[i].hitDistance)
+                {
+                    units[i].GetHit();
+
+                    return true;
+                }
+            }
+
             return false;
         }
 
