@@ -13,7 +13,6 @@ namespace BravoGame
 
         public Projectile2d(string path, Vector2 position, Vector2 dimensions, Unit owner, Vector2 target) : base(path, position, dimensions)
         {
-            Done = false;
             Speed = 5.0f;
             Owner = owner;
             Direction = target - owner.Position;

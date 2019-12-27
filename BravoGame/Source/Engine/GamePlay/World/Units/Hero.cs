@@ -33,12 +33,12 @@ namespace BravoGame
             }
 
             Rotation = Globals.RotateTowards(Position, 
-                new Vector2(Globals.Mouse.newMousePos.X, Globals.Mouse.newMousePos.Y));
+                new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMousePosition.Y));
 
             if(Globals.Mouse.LeftClick())
             {
                 GameGlobals.PassProjectiles(new FireBall(new Vector2(Position.X, Position.Y), this, 
-                    new Vector2(Globals.Mouse.newMousePos.X, Globals.Mouse.newMousePos.Y)));
+                    new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMousePosition.Y)));
             }
 
             base.Update();

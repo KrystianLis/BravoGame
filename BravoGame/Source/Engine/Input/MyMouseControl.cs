@@ -8,7 +8,7 @@ namespace BravoGame
     public class MyMouseControl
     {
         public bool dragging, rightDrag;
-        public Vector2 newMousePos, oldMousePos, firstMousePos, newMouseAdjustedPos, systemCursorPos, screenLoc;
+        public Vector2 newMousePosition, oldMousePosition, firstMousePosition, newMouseAdjustedPosition, systemCursorPos, screenLoc;
         public MouseState newMouse, oldMouse, firstMouse;
 
         public MyMouseControl()
@@ -19,9 +19,9 @@ namespace BravoGame
             oldMouse = newMouse;
             firstMouse = newMouse;
 
-            newMousePos = new Vector2(newMouse.Position.X, newMouse.Position.Y);
-            oldMousePos = new Vector2(newMouse.Position.X, newMouse.Position.Y);
-            firstMousePos = new Vector2(newMouse.Position.X, newMouse.Position.Y);
+            newMousePosition = new Vector2(newMouse.Position.X, newMouse.Position.Y);
+            oldMousePosition = new Vector2(newMouse.Position.X, newMouse.Position.Y);
+            firstMousePosition = new Vector2(newMouse.Position.X, newMouse.Position.Y);
 
             GetMouseAndAdjust();
 
@@ -54,25 +54,25 @@ namespace BravoGame
             if(newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released)
             {
                 firstMouse = newMouse;
-                firstMousePos = newMousePos = GetScreenPos(firstMouse);
+                firstMousePosition = newMousePosition = GetScreenPosition(firstMouse);
             }
         }
 
         public void UpdateOld()
         {
             oldMouse = newMouse;
-            oldMousePos = GetScreenPos(oldMouse);
+            oldMousePosition = GetScreenPosition(oldMouse);
         }
 
         public virtual float GetDistanceFromClick()
         {
-            return Globals.GetDistance(newMousePos, firstMousePos);
+            return Globals.GetDistance(newMousePosition, firstMousePosition);
         }
 
         public virtual void GetMouseAndAdjust()
         {
             newMouse = Mouse.GetState();
-            newMousePos = GetScreenPos(newMouse);
+            newMousePosition = GetScreenPosition(newMouse);
         }
 
         public int GetMouseWheelChange()
@@ -80,10 +80,10 @@ namespace BravoGame
             return newMouse.ScrollWheelValue - oldMouse.ScrollWheelValue;
         }
 
-        public Vector2 GetScreenPos(MouseState mouse)
+        public Vector2 GetScreenPosition(MouseState mouse)
         {
-            Vector2 tempVec = new Vector2(mouse.Position.X, mouse.Position.Y);
-            return tempVec;
+            Vector2 tempVectore = new Vector2(mouse.Position.X, mouse.Position.Y);
+            return tempVectore;
         }
 
         public virtual bool LeftClick()

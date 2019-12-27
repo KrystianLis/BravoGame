@@ -19,15 +19,14 @@ namespace BravoGame
         public virtual void Update()
         {
             NewKeyboard = Keyboard.GetState();
-
             GetPressedKeys();
         }
 
         public void UpdateOld()
         {
             OldKeyboard = NewKeyboard;
-
             PreviousPressedKeys = new List<MyKey>();
+
             for (int i = 0; i < PressedKeys.Count; i++)
             {
                 PreviousPressedKeys.Add(PressedKeys[i]);
@@ -50,8 +49,8 @@ namespace BravoGame
         public virtual void GetPressedKeys()
         {
             bool Found = false;
-
             PressedKeys.Clear();
+
             for (int i = 0; i < NewKeyboard.GetPressedKeys().Length; i++)
             {
                 PressedKeys.Add(new MyKey(NewKeyboard.GetPressedKeys()[i].ToString(), 1));

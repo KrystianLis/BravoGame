@@ -30,8 +30,8 @@ namespace BravoGame
         protected override void Initialize()
         {
             //this.IsMouseVisible = true;
-            Globals.ScreenWidth = 800;
-            Globals.ScreenHeight = 500;
+            Globals.ScreenWidth = 1024;
+            Globals.ScreenHeight = 768;
 
             graphics.PreferredBackBufferWidth = Globals.ScreenWidth;
             graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
@@ -100,7 +100,7 @@ namespace BravoGame
 
             world.Draw(Vector2.Zero);
 
-            cursor.Draw(new Vector2(Globals.Mouse.newMousePos.X, Globals.Mouse.newMouse.Y), new Vector2(0, 0));
+            cursor.Draw(new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMouse.Y), new Vector2(0, 0));
 
             Globals.spriteBatch.End();
 

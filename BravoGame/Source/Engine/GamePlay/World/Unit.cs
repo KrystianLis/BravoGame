@@ -17,7 +17,6 @@ namespace BravoGame
 
         public override void Update()
         {
-
             base.Update();
         }
 
