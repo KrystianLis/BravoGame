@@ -1,0 +1,26 @@
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\BravoGame.exe
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\BravoGame.pdb
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.XInput.dll
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\MonoGame.Framework.xml
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.xml
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
+E:\Programowanie\BravoGame\BravoGame\obj\x86\Debug\BravoGame.csprojAssemblyReference.cache
+E:\Programowanie\BravoGame\BravoGame\obj\x86\Debug\BravoGame.csproj.CopyComplete
+E:\Programowanie\BravoGame\BravoGame\obj\x86\Debug\BravoGame.exe
+E:\Programowanie\BravoGame\BravoGame\obj\x86\Debug\BravoGame.pdb
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\Content\Heroes\Hero.xnb
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\Content\Cursor\cursor .xnb
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\Content\Cursor\cursor.xnb
+E:\Programowanie\BravoGame\BravoGame\bin\Windows\x86\Debug\Content\Projectiles\Fireball.xnb

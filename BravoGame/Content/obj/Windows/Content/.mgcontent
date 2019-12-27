@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>E:/Programowanie/BravoGame/BravoGame/Content/Cursor/cursor .png</File>
+    <File>E:/Programowanie/BravoGame/BravoGame/Content/Heroes/Hero.png</File>
+    <File>E:/Programowanie/BravoGame/BravoGame/Content/Projectiles/fireball.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Cursor/cursor.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BravoGame.GameGlobals" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameGlobals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.Main" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAAAAwEAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.Program" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.Basic2d" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAgAACAAAIAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\Basic2d.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.Projectile2d" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgACAQAAAIgAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\GamePlay\World\Projectile2d.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.FireBall" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\GamePlay\World\Projectiles\FireBall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.Unit" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\GamePlay\World\Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.Hero" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\GamePlay\World\Units\Hero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.World" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASgAAAAAAAAAgBAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\GamePlay\World.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.Globals" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEBIAgBAAAgAAAAAAEAAAAAAAAAAAgAAQAAAAAA=</HashCode>
+      <FileName>Source\Engine\Globals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.MyKey" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAABAAEAAA=</HashCode>
+      <FileName>Source\Engine\Input\Keyboard\MyKey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.MyKeyboard" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQQAAAAAAAAAMAAAAAAAIAAAABCAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\Input\MyKeyboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.MyMouseControl" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QJQAAAgAAAAAAyB4QAgAACAAQAjCAIAAAAIICAAcAAA=</HashCode>
+      <FileName>Source\Engine\Input\MyMouseControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BravoGame.MyTimer" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAEAAAAAABAAAAAAAAAAAAAIAAAACBAAACAAMBAA=</HashCode>
+      <FileName>Source\Engine\Input\MyTimer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="BravoGame.PassObject" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\Globals.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="BravoGame.PassObjectAndRetrun" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Engine\Globals.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
