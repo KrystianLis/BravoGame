@@ -8,9 +8,7 @@ namespace BravoGame
     public class MyMouseControl
     {
         public bool dragging, rightDrag;
-
         public Vector2 newMousePos, oldMousePos, firstMousePos, newMouseAdjustedPos, systemCursorPos, screenLoc;
-
         public MouseState newMouse, oldMouse, firstMouse;
 
         public MyMouseControl()
@@ -27,7 +25,7 @@ namespace BravoGame
 
             GetMouseAndAdjust();
 
-            //screenLoc = new Vector2((int)(systemCursorPos.X/Globals.screenWidth), (int)(systemCursorPos.Y/Globals.screenHeight));
+            //screenLoc = new Vector2((int)(systemCursorPos.X/Globals.screenWidth), (int)(systemCursorPos.Y/Globals.ScreenHeight));
         }
 
         #region Properties
@@ -90,7 +88,7 @@ namespace BravoGame
 
         public virtual bool LeftClick()
         {
-            if( newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight)
+            if( newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.ScreenHeight)
             {
                 return true;
             }
@@ -102,7 +100,7 @@ namespace BravoGame
         {
             bool holding = false;
 
-            if( newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight)
+            if( newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.ScreenHeight)
             {
                 holding = true;
 
@@ -128,7 +126,7 @@ namespace BravoGame
 
         public virtual bool RightClick()
         {
-            return newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight
+            return newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.ScreenHeight
                 ? true
                 : false;
         }
@@ -137,7 +135,7 @@ namespace BravoGame
         {
             bool holding = false;
 
-            if( newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight)
+            if( newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.ScreenHeight)
             {
                 holding = true;
 

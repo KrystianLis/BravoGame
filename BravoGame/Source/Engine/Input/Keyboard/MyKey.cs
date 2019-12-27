@@ -10,7 +10,6 @@ namespace BravoGame
         public int State;
         public string Key, Print, Display;
 
-
         public MyKey(string key, int state)
         {
             Key = key;

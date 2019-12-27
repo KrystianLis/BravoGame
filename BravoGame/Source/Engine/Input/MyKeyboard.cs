@@ -10,7 +10,6 @@ namespace BravoGame
     public class MyKeyboard
     {
         public KeyboardState NewKeyboard, OldKeyboard;
-
         public List<MyKey> PressedKeys = new List<MyKey>(), PreviousPressedKeys = new List<MyKey>();
 
         public MyKeyboard()
@@ -50,7 +49,7 @@ namespace BravoGame
 
         public virtual void GetPressedKeys()
         {
-            bool found = false;
+            bool Found = false;
 
             PressedKeys.Clear();
             for (int i = 0; i < NewKeyboard.GetPressedKeys().Length; i++)

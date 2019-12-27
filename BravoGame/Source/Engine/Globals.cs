@@ -15,15 +15,12 @@ namespace BravoGame
 
     public class Globals
     {
-        public static int screenHeight, screenWidth;
-
+        public static int ScreenHeight, ScreenWidth;
         public static ContentManager Content;
         public static SpriteBatch spriteBatch;
-
-        public static MyKeyboard keyboard;
-        public static MyMouseControl mouse;
-
-        public static GameTime gameTime;
+        public static MyKeyboard Keyboard;
+        public static MyMouseControl Mouse;
+        public static GameTime GameTime;
 
         public static float GetDistance(Vector2 position, Vector2 target)
         {

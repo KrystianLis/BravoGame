@@ -30,11 +30,11 @@ namespace BravoGame
         protected override void Initialize()
         {
             //this.IsMouseVisible = true;
-            Globals.screenWidth = 800;
-            Globals.screenHeight = 500;
+            Globals.ScreenWidth = 800;
+            Globals.ScreenHeight = 500;
 
-            graphics.PreferredBackBufferWidth = Globals.screenWidth;
-            graphics.PreferredBackBufferHeight = Globals.screenHeight;
+            graphics.PreferredBackBufferWidth = Globals.ScreenWidth;
+            graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
 
             graphics.ApplyChanges();
 
@@ -52,8 +52,8 @@ namespace BravoGame
 
             cursor = new Basic2d(@"Cursor\cursor", new Vector2(0, 0), new Vector2(24, 24));
 
-            Globals.keyboard = new MyKeyboard();
-            Globals.mouse = new MyMouseControl();
+            Globals.Keyboard = new MyKeyboard();
+            Globals.Mouse = new MyMouseControl();
 
             world = new World();
         }
@@ -76,14 +76,14 @@ namespace BravoGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            Globals.gameTime = gameTime;
-            Globals.keyboard.Update();
-            Globals.mouse.Update();
+            Globals.GameTime = gameTime;
+            Globals.Keyboard.Update();
+            Globals.Mouse.Update();
 
             world.Update();
 
-            Globals.keyboard.UpdateOld();
-            Globals.mouse.UpdateOld();
+            Globals.Keyboard.UpdateOld();
+            Globals.Mouse.UpdateOld();
 
             base.Update(gameTime);
         }
@@ -100,7 +100,7 @@ namespace BravoGame
 
             world.Draw(Vector2.Zero);
 
-            cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMouse.Y), new Vector2(0, 0));
+            cursor.Draw(new Vector2(Globals.Mouse.newMousePos.X, Globals.Mouse.newMouse.Y), new Vector2(0, 0));
 
             Globals.spriteBatch.End();
 
