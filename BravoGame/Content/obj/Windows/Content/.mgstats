@@ -1,1 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/dev/BravoGame/BravoGame/Content/Cursor/cursor .png","C:/dev/BravoGame/BravoGame/Content/bin/Windows/Content/Cursor/cursor.xnb","TextureProcessor","Texture2DContent",638,2389,0.431993
+"C:/dev/BravoGame/BravoGame/Content/Heroes/Hero.png","C:/dev/BravoGame/BravoGame/Content/bin/Windows/Content/Heroes/Hero.xnb","TextureProcessor","Texture2DContent",789,4985,0.011998
+"C:/dev/BravoGame/BravoGame/Content/Projectiles/fireball.png","C:/dev/BravoGame/BravoGame/Content/bin/Windows/Content/Projectiles/fireball.xnb","TextureProcessor","Texture2DContent",11843,16469,0.0169963

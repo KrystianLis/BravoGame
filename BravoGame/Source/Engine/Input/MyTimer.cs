@@ -5,26 +5,25 @@ namespace BravoGame
 {
     public class MyTimer
     {
-        public bool goodToGo;
-        protected int mSec;
+        public bool GoodToGo;
+        protected int MiliSec;
         protected TimeSpan timer = new TimeSpan();
         
-
         public MyTimer(int miliSeconds)
         {
-            goodToGo = false;
-            mSec = miliSeconds;
+            GoodToGo = false;
+            MiliSec = miliSeconds;
         }
         public MyTimer(int miliSeconds, bool STARTLOADED)
         {
-            goodToGo = STARTLOADED;
-            mSec = miliSeconds;
+            GoodToGo = STARTLOADED;
+            MiliSec = miliSeconds;
         }
 
         public int MSec
         {
-            get { return mSec; }
-            set { mSec = value; }
+            get { return MiliSec; }
+            set { MiliSec = value; }
         }
         public int Timer
         {
@@ -33,12 +32,12 @@ namespace BravoGame
 
         public void UpdateTimer()
         {
-            timer += Globals.gameTime.ElapsedGameTime;
+            timer += Globals.GameTime.ElapsedGameTime;
         }
 
         public void UpdateTimer(float speed)
         {
-            timer += TimeSpan.FromTicks((long)(Globals.gameTime.ElapsedGameTime.Ticks * speed));
+            timer += TimeSpan.FromTicks((long)(Globals.GameTime.ElapsedGameTime.Ticks * speed));
         }
 
         public virtual void AddToTimer(int msec)
@@ -48,7 +47,7 @@ namespace BravoGame
 
         public bool Test()
         {
-            if(timer.TotalMilliseconds >= mSec || goodToGo)
+            if(timer.TotalMilliseconds >= MiliSec || GoodToGo)
             {
                 return true;
             }
@@ -60,31 +59,31 @@ namespace BravoGame
 
         public void Reset()
         {
-            timer = timer.Subtract(new TimeSpan(0, 0, mSec/60000, mSec/1000, mSec%1000));
+            timer = timer.Subtract(new TimeSpan(0, 0, MiliSec/60000, MiliSec/1000, MiliSec%1000));
             if(timer.TotalMilliseconds < 0)
             {
                 timer = TimeSpan.Zero;
             }
-            goodToGo = false;
+            GoodToGo = false;
         }
 
         public void Reset(int NEWTIMER)
         {
             timer = TimeSpan.Zero;
             MSec = NEWTIMER;
-            goodToGo = false;
+            GoodToGo = false;
         }
 
         public void ResetToZero()
         {
             timer = TimeSpan.Zero;
-            goodToGo = false;
+            GoodToGo = false;
         }
 
         public virtual XElement ReturnXML()
         {
             XElement xml= new XElement("Timer",
-                                    new XElement("mSec", mSec),
+                                    new XElement("mSec", MiliSec),
                                     new XElement("timer", Timer));
 
             return xml;

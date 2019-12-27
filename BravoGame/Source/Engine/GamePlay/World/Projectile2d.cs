@@ -5,43 +5,36 @@ namespace BravoGame
 {
     public class Projectile2d : Basic2d
     {
-        public bool done;
-
-        public float speed;
-
-        public Vector2 direction;
-
-        public Unit _owner;
-
-        public MyTimer timer;
+        public bool Done;
+        public float Speed;
+        public Vector2 Direction;
+        public Unit Owner;
+        public MyTimer Timer;
 
         public Projectile2d(string path, Vector2 position, Vector2 dimensions, Unit owner, Vector2 target) : base(path, position, dimensions)
         {
-            done = false;
-            speed = 5.0f;
-            _owner = owner;
-            direction = target - owner.Position;
-            direction.Normalize();
-
-            rotation = Globals.RotateTowards(position, new Vector2(target.X - 360, target.Y - 360));
-
-            timer = new MyTimer(1200);
+            Speed = 5.0f;
+            Owner = owner;
+            Direction = target - owner.Position;
+            Direction.Normalize();
+            Rotation = Globals.RotateTowards(position, new Vector2(target.X - 360, target.Y - 360));
+            Timer = new MyTimer(1200);
         }
 
         public virtual void Update(Vector2 offset, List<Unit> units)
         {
-            Position += direction * speed;
+            Position += Direction * Speed;
 
-            timer.UpdateTimer();
+            Timer.UpdateTimer();
 
-            if(timer.Test())
+            if(Timer.Test())
             {
-                done = true;
+                Done = true;
             }
 
             if(HitSomething(units))
             {
-                done = true;
+                Done = true;
             }
         }
 

@@ -15,15 +15,12 @@ namespace BravoGame
 
     public class Globals
     {
-        public static int screenHeight, screenWidth;
-
+        public static int ScreenHeight, ScreenWidth;
         public static ContentManager Content;
         public static SpriteBatch spriteBatch;
-
-        public static MyKeyboard keyboard;
-        public static MyMouseControl mouse;
-
-        public static GameTime gameTime;
+        public static MyKeyboard Keyboard;
+        public static MyMouseControl Mouse;
+        public static GameTime GameTime;
 
         public static float GetDistance(Vector2 position, Vector2 target)
         {
@@ -32,12 +29,12 @@ namespace BravoGame
 
         public static float RotateTowards(Vector2 Pos, Vector2 focus)
         {
-
             float h, sineTheta, angle;
+
             if (Pos.Y - focus.Y != 0)
             {
                 h = (float)Math.Sqrt(Math.Pow(Pos.X - focus.X, 2) + Math.Pow(Pos.Y - focus.Y, 2));
-                sineTheta = (float)(Math.Abs(Pos.Y - focus.Y) / h); //* ((item.Pos.Y-focus.Y)/(Math.Abs(item.Pos.Y-focus.Y))));
+                sineTheta = (float)(Math.Abs(Pos.Y - focus.Y) / h); // * ((item.Pos.Y-focus.Y)/(Math.Abs(item.Pos.Y-focus.Y))));
             }
             else
             {
@@ -48,17 +45,17 @@ namespace BravoGame
             angle = (float)Math.Asin(sineTheta);
 
             // Drawing diagonial lines here.
-            //Quadrant 2
+            // Quadrant 2
             if (Pos.X - focus.X > 0 && Pos.Y - focus.Y > 0)
             {
                 angle = (float)(Math.PI * 3 / 2 + angle);
             }
-            //Quadrant 3
+            // Quadrant 3
             else if (Pos.X - focus.X > 0 && Pos.Y - focus.Y < 0)
             {
                 angle = (float)(Math.PI * 3 / 2 - angle);
             }
-            //Quadrant 1
+            // Quadrant 1
             else if (Pos.X - focus.X < 0 && Pos.Y - focus.Y > 0)
             {
                 angle = (float)(Math.PI / 2 - angle);

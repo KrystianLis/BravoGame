@@ -10,35 +10,35 @@ namespace BravoGame
     {
         public Hero(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
-            speed = 2.0f;
+            Speed = 2.0f;
         }
 
         public override void Update()
         {
-            if(Globals.keyboard.GetPress("A"))
+            if(Globals.Keyboard.GetPress("A"))
             {
-                Position = new Vector2(Position.X - speed, Position.Y);
+                Position = new Vector2(Position.X - Speed, Position.Y);
             }
-            if (Globals.keyboard.GetPress("D"))
+            if (Globals.Keyboard.GetPress("D"))
             {
-                Position = new Vector2(Position.X + speed, Position.Y);
+                Position = new Vector2(Position.X + Speed, Position.Y);
             }
-            if (Globals.keyboard.GetPress("W"))
+            if (Globals.Keyboard.GetPress("W"))
             {
-                Position = new Vector2(Position.X, Position.Y - speed);
+                Position = new Vector2(Position.X, Position.Y - Speed);
             }
-            if (Globals.keyboard.GetPress("S"))
+            if (Globals.Keyboard.GetPress("S"))
             {
-                Position = new Vector2(Position.X, Position.Y + speed);
+                Position = new Vector2(Position.X, Position.Y + Speed);
             }
 
-            rotation = Globals.RotateTowards(Position, 
-                new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
+            Rotation = Globals.RotateTowards(Position, 
+                new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMousePosition.Y));
 
-            if(Globals.mouse.LeftClick())
+            if(Globals.Mouse.LeftClick())
             {
                 GameGlobals.PassProjectiles(new FireBall(new Vector2(Position.X, Position.Y), this, 
-                    new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y)));
+                    new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMousePosition.Y)));
             }
 
             base.Update();

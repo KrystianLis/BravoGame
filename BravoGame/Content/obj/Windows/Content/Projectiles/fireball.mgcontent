@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>E:/Programowanie/BravoGame/BravoGame/Content/Projectiles/fireball.png</SourceFile>
-  <SourceTime>2019-10-16T23:00:05.7034063+02:00</SourceTime>
-  <DestFile>E:/Programowanie/BravoGame/BravoGame/Content/bin/Windows/Content/Projectiles/fireball.xnb</DestFile>
-  <DestTime>2019-10-16T23:01:56.0310312+02:00</DestTime>
+  <SourceFile>C:/dev/BravoGame/BravoGame/Content/Projectiles/fireball.png</SourceFile>
+  <SourceTime>2019-12-27T16:27:51.1735836+01:00</SourceTime>
+  <DestFile>C:/dev/BravoGame/BravoGame/Content/bin/Windows/Content/Projectiles/fireball.xnb</DestFile>
+  <DestTime>2019-12-27T16:57:36.1334835+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

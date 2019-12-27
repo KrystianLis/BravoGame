@@ -8,16 +8,15 @@ namespace BravoGame
 {
     public class Unit : Basic2d
     {
-        public float speed;
+        public float Speed;
 
         public Unit(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
-            speed = 2.0f;
+            Speed = 2.0f;
         }
 
         public override void Update()
         {
-
             base.Update();
         }
 
