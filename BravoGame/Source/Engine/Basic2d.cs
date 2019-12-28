@@ -22,7 +22,7 @@ namespace BravoGame
             Model = Globals.Content.Load<Texture2D>(path);
         }
 
-        public virtual void Update()
+        public virtual void Update(Vector2 offset)
         {
 
         }

@@ -13,7 +13,7 @@ namespace BravoGame
             Speed = 2.0f;
         }
 
-        public override void Update()
+        public override void Update(Vector2 offset)
         {
             if(Globals.Keyboard.GetPress("A"))
             {
@@ -41,7 +41,7 @@ namespace BravoGame
                     new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMousePosition.Y)));
             }
 
-            base.Update();
+            base.Update(offset);
         }
 
         public override void Draw(Vector2 offset)
