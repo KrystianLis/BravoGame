@@ -15,14 +15,7 @@ namespace BravoGame
 
         public virtual void Update(Vector2 offset, Hero hero)
         {
-            AI(hero);
-
             base.Update(offset);
-        }
-
-        public virtual void AI(Hero hero)
-        {
-
         }
 
         public override void Draw(Vector2 offset)

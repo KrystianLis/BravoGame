@@ -6,15 +6,17 @@ using Microsoft.Xna.Framework;
 
 namespace BravoGame
 {
-    public class SpawnPoint : Basic2d
+    public class SpawnPoint
     {
+        public Vector2 Position;
         public float hitDistance;
         public bool Dead;
         public MyTimer spawnTimer = new MyTimer(10000);
 
-        public SpawnPoint(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
+        public SpawnPoint(Vector2 position)
         {
             hitDistance = 35.0f;
+            Position = position;
         }
 
         public virtual void GetHit()
@@ -22,7 +24,7 @@ namespace BravoGame
             Dead = true;
         }
 
-        public override void Update(Vector2 offset)
+        public virtual void Update(Vector2 offset)
         {
             spawnTimer.UpdateTimer();
             SpawnMob();
@@ -31,18 +33,11 @@ namespace BravoGame
             {
                 spawnTimer.ResetToZero();
             }
-
-            base.Update(offset);
         }
 
         public virtual void SpawnMob()
         {
             GameGlobals.PassMob(new FirstMob(new Vector2(Position.X, Position.Y)));
-        }
-
-        public override void Draw(Vector2 offset)
-        {
-            base.Draw(offset);
         }
     }
 }
