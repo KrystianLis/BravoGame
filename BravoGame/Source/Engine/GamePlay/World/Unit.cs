@@ -8,13 +8,13 @@ namespace BravoGame
 {
     public class Unit : Basic2d
     {
-        public float Speed, hitDistance;
+        public float Speed, HitDistance;
         public bool Dead;
 
         public Unit(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
             Speed = 2.0f;
-            hitDistance = 35.0f;
+            HitDistance = 30.0f;
         }
 
         public virtual void GetHit()

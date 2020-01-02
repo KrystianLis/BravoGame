@@ -42,7 +42,7 @@ namespace BravoGame
         {
             for (int i = 0; i < units.Count; i++)
             {
-                if(Globals.GetDistance(Position, units[i].Position) < units[i].hitDistance)
+                if(Globals.GetDistance(Position, units[i].Position) < units[i].HitDistance)
                 {
                     units[i].GetHit();
 

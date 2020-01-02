@@ -9,28 +9,21 @@ namespace BravoGame
     public class SpawnPoint
     {
         public Vector2 Position;
-        public float hitDistance;
-        public bool Dead;
         public MyTimer spawnTimer = new MyTimer(10000);
 
         public SpawnPoint(Vector2 position)
         {
-            hitDistance = 35.0f;
             Position = position;
-        }
-
-        public virtual void GetHit()
-        {
-            Dead = true;
+            SpawnMob();
         }
 
         public virtual void Update(Vector2 offset)
         {
             spawnTimer.UpdateTimer();
-            SpawnMob();
 
             if(spawnTimer.Test())
             {
+                SpawnMob();
                 spawnTimer.ResetToZero();
             }
         }

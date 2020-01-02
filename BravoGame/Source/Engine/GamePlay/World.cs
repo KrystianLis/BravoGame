@@ -22,9 +22,12 @@ namespace BravoGame
             GameGlobals.PassProjectiles = AddProjectiles;
             GameGlobals.PassMob = AddMobs;
             Offset = new Vector2(0, 0);
+
             SpawnPoints.Add(new SpawnPoint(new Vector2(200, 200)));
             SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth / 2, 200)));
+            SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(500);
             SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth - 200, 200)));
+            SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(1000);
         }
 
         public virtual void Update()

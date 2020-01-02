@@ -24,7 +24,7 @@ namespace BravoGame
 
         public static float GetDistance(Vector2 position, Vector2 target)
         {
-            return (float)Math.Sqrt(Math.Pow(position.X - target.Y, 2) + Math.Pow(position.Y - target.Y, 2));
+            return (float)Math.Sqrt(Math.Pow(position.X - target.X, 2) + Math.Pow(position.Y - target.Y, 2));
         }
 
         public static float RotateTowards(Vector2 Pos, Vector2 focus)
