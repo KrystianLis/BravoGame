@@ -18,7 +18,7 @@ namespace BravoGame
             Direction = target - owner.Position;
             Direction.Normalize();
             Rotation = Globals.RotateTowards(position, new Vector2(target.X - 360, target.Y - 360));
-            Timer = new MyTimer(1200);
+            Timer = new MyTimer(4000);
         }
 
         public virtual void Update(Vector2 offset, List<Unit> units)
@@ -42,7 +42,7 @@ namespace BravoGame
         {
             for (int i = 0; i < units.Count; i++)
             {
-                if(Globals.GetDistance(Position, units[i].Position) < units[i].hitDistance)
+                if(Globals.GetDistance(Position, units[i].Position) < units[i].HitDistance)
                 {
                     units[i].GetHit();
 

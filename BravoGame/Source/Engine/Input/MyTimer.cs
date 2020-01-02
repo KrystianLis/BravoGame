@@ -6,7 +6,6 @@ namespace BravoGame
     public class MyTimer
     {
         public bool GoodToGo;
-        protected int MiliSec;
         protected TimeSpan timer = new TimeSpan();
         
         public MyTimer(int miliSeconds)
@@ -14,17 +13,15 @@ namespace BravoGame
             GoodToGo = false;
             MiliSec = miliSeconds;
         }
-        public MyTimer(int miliSeconds, bool STARTLOADED)
+
+        public MyTimer(int miliSeconds, bool startloaded)
         {
-            GoodToGo = STARTLOADED;
+            GoodToGo = startloaded;
             MiliSec = miliSeconds;
         }
 
-        public int MSec
-        {
-            get { return MiliSec; }
-            set { MiliSec = value; }
-        }
+        public int MiliSec { get; set; }
+
         public int Timer
         {
             get { return (int)timer.TotalMilliseconds; }
@@ -42,7 +39,7 @@ namespace BravoGame
 
         public virtual void AddToTimer(int msec)
         {
-            timer += TimeSpan.FromMilliseconds((long)(msec));
+            timer += TimeSpan.FromMilliseconds(msec);
         }
 
         public bool Test()
@@ -59,7 +56,7 @@ namespace BravoGame
 
         public void Reset()
         {
-            timer = timer.Subtract(new TimeSpan(0, 0, MiliSec/60000, MiliSec/1000, MiliSec%1000));
+            timer = timer.Subtract(new TimeSpan(0, 0, MiliSec / 60000, MiliSec / 1000, MiliSec % 1000));
             if(timer.TotalMilliseconds < 0)
             {
                 timer = TimeSpan.Zero;
@@ -67,10 +64,10 @@ namespace BravoGame
             GoodToGo = false;
         }
 
-        public void Reset(int NEWTIMER)
+        public void Reset(int newtimer)
         {
             timer = TimeSpan.Zero;
-            MSec = NEWTIMER;
+            MiliSec = newtimer;
             GoodToGo = false;
         }
 
@@ -89,14 +86,14 @@ namespace BravoGame
             return xml;
         }
 
-        public void SetTimer(TimeSpan TIME)
+        public void SetTimer(TimeSpan time)
         {
-            timer = TIME;
+            timer = time;
         }
 
-        public virtual void SetTimer(int MSEC)
+        public virtual void SetTimer(int msec)
         {
-            timer = TimeSpan.FromMilliseconds((long)(MSEC));
+            timer = TimeSpan.FromMilliseconds(msec);
         }
     }
 }

@@ -22,9 +22,12 @@ namespace BravoGame
             GameGlobals.PassProjectiles = AddProjectiles;
             GameGlobals.PassMob = AddMobs;
             Offset = new Vector2(0, 0);
-            SpawnPoints.Add(new SpawnPoint("", new Vector2(50, 50), new Vector2(35, 35)));
-            SpawnPoints.Add(new SpawnPoint("", new Vector2(Globals.ScreenWidth / 2, 50), new Vector2(35, 35)));
-            SpawnPoints.Add(new SpawnPoint("", new Vector2(50, 50), new Vector2(Globals.ScreenWidth - 50, 35)));
+
+            SpawnPoints.Add(new SpawnPoint(new Vector2(200, 200)));
+            SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth / 2, 200)));
+            SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(500);
+            SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth - 200, 200)));
+            SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(1000);
         }
 
         public virtual void Update()
@@ -76,11 +79,6 @@ namespace BravoGame
             for (int i = 0; i < Projectiles.Count; i++)
             {
                 Projectiles[i].Draw(offset);
-            }
-
-            for (int i = 0; i < SpawnPoints.Count; i++)
-            {
-                SpawnPoints[i].Draw(offset);
             }
 
             for (int i = 0; i < Mobs.Count; i++)

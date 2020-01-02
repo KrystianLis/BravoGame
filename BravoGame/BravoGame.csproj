@@ -73,9 +73,6 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <Content Include="Content\Projectiles\Fireball.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup />

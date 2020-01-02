@@ -8,7 +8,7 @@ namespace BravoGame
 {
     public class FirstMob : Mob
     {
-        public FirstMob(Vector2 position) : base(@"Mobs\FirstMob", position, new Vector2(40, 40))
+        public FirstMob(Vector2 position) : base(@"Mobs\death_scythe", position, new Vector2(40, 47))
         {
             Speed = 2.0f;
         }
