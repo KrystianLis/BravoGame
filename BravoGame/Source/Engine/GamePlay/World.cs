@@ -16,20 +16,23 @@ namespace BravoGame
         public int SecondNumer;
         public int Result;
 
-        public SpriteFont font;
-
         public int Score;
+       
+        public SpriteFont font;
 
         public Vector2 Offset;
         public Hero Hero;
-        public UI Ui;
+        public UI UI;
 
-        public List<Projectile2d> Projectiles = new List<Projectile2d>();
+        public List<Projectile2d> Projectiles;
         public List<Mob> Mobs = new List<Mob>();
-        public SpawnPoint SpawnPoint = new SpawnPoint();
+        public SpawnPoint SpawnPoint;
 
         public World()
         {
+            Projectiles = new List<Projectile2d>();
+            SpawnPoint = new SpawnPoint();
+
             Score = 0;
 
             Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
@@ -40,7 +43,7 @@ namespace BravoGame
             font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
             MathOperation();
 
-            Ui = new UI();
+            UI = new UI();
         }
 
         private void MathOperation()
@@ -80,7 +83,7 @@ namespace BravoGame
                 }
             }
 
-            Ui.Update(this);
+            UI.Update(this);
         }
 
         public virtual void AddProjectiles(object info)
@@ -107,7 +110,7 @@ namespace BravoGame
                 Mobs[i].Draw(Offset);
             }
 
-            Ui.Draw(this);
+            UI.Draw(this);
 
             string tempString = $"{FirstNumber} + {SecondNumer} = ?";
             Vector2 stringDimensions = font.MeasureString(tempString);
