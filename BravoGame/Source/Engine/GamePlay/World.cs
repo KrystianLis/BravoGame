@@ -18,7 +18,7 @@ namespace BravoGame
 
         public SpriteFont font;
 
-        public int Points;
+        public int Score;
 
         public Vector2 Offset;
         public Hero Hero;
@@ -30,7 +30,7 @@ namespace BravoGame
 
         public World()
         {
-            Points = 0;
+            Score = 0;
 
             Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
             GameGlobals.PassProjectiles = AddProjectiles;
@@ -74,7 +74,7 @@ namespace BravoGame
 
                 if (Mobs[i].Dead)
                 {
-                    Points++;
+                    Score++;
                     Mobs.RemoveAt(i);
                     i--;
                 }
