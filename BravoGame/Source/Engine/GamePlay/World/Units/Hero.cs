@@ -11,6 +11,9 @@ namespace BravoGame
         public Hero(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
             Speed = 2.0f;
+
+            Health = 1;
+            HealthMax = Health;
         }
 
         public override void Update(Vector2 offset)

@@ -8,18 +8,26 @@ namespace BravoGame
 {
     public class Unit : Basic2d
     {
-        public float Speed, HitDistance;
+        public float Speed, HitDistance, Health, HealthMax;
         public bool Dead;
 
         public Unit(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
             Speed = 2.0f;
             HitDistance = 30.0f;
+
+            Health = 1;
+            HealthMax = Health;
         }
 
-        public virtual void GetHit()
+        public virtual void GetHit(float damage)
         {
-            Dead = true;
+            Health -= damage;
+            
+            if(Health <= 0)
+            {
+                Dead = true;
+            }
         }
 
         public override void Update(Vector2 offset)
