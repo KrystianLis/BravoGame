@@ -59,6 +59,7 @@
     <Compile Include="Source\Engine\Input\MyKeyboard.cs" />
     <Compile Include="Source\Engine\Input\Keyboard\MyKey.cs" />
     <Compile Include="Source\Engine\GamePlay\World.cs" />
+    <Compile Include="Source\Engine\Output\QuantityDisplayBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -75,6 +76,12 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
     <None Include="ClassDiagram.cd" />
+    <None Include="Content\Misc\shade.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Misc\solid.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

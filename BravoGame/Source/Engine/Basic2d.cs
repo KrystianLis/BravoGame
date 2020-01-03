@@ -35,11 +35,11 @@ namespace BravoGame
             }
         }
 
-        public virtual void Draw(Vector2 offset, Vector2 origin)
+        public virtual void Draw(Vector2 offset, Vector2 origin, Color color)
         {
             if (Model != null)
             {
-                Globals.spriteBatch.Draw(Model, new Rectangle((int)(Position.X + offset.X), (int)(Position.Y + offset.Y), (int)Dimensions.X, (int)Dimensions.Y), null, Color.White, Rotation, new Vector2(origin.X, origin.Y), new SpriteEffects(), 0);
+                Globals.spriteBatch.Draw(Model, new Rectangle((int)(Position.X + offset.X), (int)(Position.Y + offset.Y), (int)Dimensions.X, (int)Dimensions.Y), null, color, Rotation, new Vector2(origin.X, origin.Y), new SpriteEffects(), 0);
             }
         }
     }

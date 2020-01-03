@@ -17,6 +17,16 @@ namespace BravoGame
             base.Update(offset);
         }
 
+        // TODO: Add mathematical logic
+        //public virtual void MethematicalLogic(Hero hero)
+        //{
+        //    if()
+        //    {
+        //        hero.GetHit(1);
+        //        Dead = true;
+        //    }
+        //}
+
         public override void Draw(Vector2 offset)
         {
             base.Draw(offset);

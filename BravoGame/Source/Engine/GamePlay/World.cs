@@ -31,9 +31,7 @@ namespace BravoGame
 
             SpawnPoints.Add(new SpawnPoint(new Vector2(200, 200)));
             SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth / 2, 200)));
-            SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(500);
             SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth - 200, 200)));
-            SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(1000);
 
             Ui = new UI();
         }

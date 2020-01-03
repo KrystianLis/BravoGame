@@ -95,7 +95,7 @@ namespace BravoGame
             Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             world.Draw(Vector2.Zero);
-            cursor.Draw(new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMouse.Y), new Vector2(0, 0));
+            cursor.Draw(new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMouse.Y), new Vector2(0, 0), Color.White);
 
             Globals.spriteBatch.End();
 
