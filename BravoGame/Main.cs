@@ -10,8 +10,6 @@ namespace BravoGame
     public class Main : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
         World world;
         Basic2d cursor;
 
@@ -29,13 +27,11 @@ namespace BravoGame
         /// </summary>
         protected override void Initialize()
         {
-            //this.IsMouseVisible = true;
             Globals.ScreenWidth = 1024;
             Globals.ScreenHeight = 768;
 
             graphics.PreferredBackBufferWidth = Globals.ScreenWidth;
             graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
-
             graphics.ApplyChanges();
 
             base.Initialize();
