@@ -6,7 +6,7 @@ namespace BravoGame
     public class FireBall : Projectile2d
     {
 
-        public FireBall(Vector2 position, Unit owner, Vector2 target) : base(@"Projectiles\FireBall", position, new Vector2(20, 20), owner, target)
+        public FireBall(Vector2 position, Unit owner, Vector2 target) : base(@"Projectiles\fireball", position, new Vector2(20, 20), owner, target)
         {
 
         }

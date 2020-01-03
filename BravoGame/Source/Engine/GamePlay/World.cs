@@ -18,7 +18,7 @@ namespace BravoGame
 
         public World()
         {
-            Hero = new Hero(@"Heroes\Hero", new Vector2(300, 300), new Vector2(25, 49));
+            Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
             GameGlobals.PassProjectiles = AddProjectiles;
             GameGlobals.PassMob = AddMobs;
             Offset = new Vector2(0, 0);
