@@ -9,12 +9,10 @@ namespace BravoGame
     public class SpawnPoint
     {
         public Vector2 Position;
-        public MyTimer spawnTimer = new MyTimer(10000);
+        public MyTimer spawnTimer = new MyTimer(7000);
 
-        public SpawnPoint(Vector2 position)
+        public SpawnPoint()
         {
-            Position = position;
-            SpawnMob();
         }
 
         public virtual void Update(Vector2 offset)
@@ -30,7 +28,9 @@ namespace BravoGame
 
         public virtual void SpawnMob()
         {
-            GameGlobals.PassMob(new FirstMob(new Vector2(Position.X, Position.Y)));
+            GameGlobals.PassMob(new FirstMob(new Vector2(200, 200)));
+            GameGlobals.PassMob(new FirstMob(new Vector2(Globals.ScreenWidth / 2, 200)));
+            GameGlobals.PassMob(new FirstMob(new Vector2(Globals.ScreenWidth - 200, 200)));
         }
     }
 }

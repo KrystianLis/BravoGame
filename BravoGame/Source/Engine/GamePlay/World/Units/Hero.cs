@@ -10,29 +10,11 @@ namespace BravoGame
 {
     public class Hero : Unit
     {
-        public int FirstNumber;
-        public int SecondNumer;
-        public int Result;
-
-        public SpriteFont font;
-
         public Hero(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
             Speed = 2.0f;
-
             Health = 1;
             HealthMax = Health;
-
-            font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
-            MathOperation();
-        }
-
-        private void MathOperation()
-        {
-            var random = new Random();
-            FirstNumber = random.Next(1, 100);
-            SecondNumer = random.Next(1, 100);
-            Result = FirstNumber + FirstNumber;
         }
 
         public override void Update(Vector2 offset)
@@ -68,10 +50,6 @@ namespace BravoGame
 
         public override void Draw(Vector2 offset)
         {
-            string tempString = $"{FirstNumber} + {SecondNumer} = ?";
-            Vector2 stringDimensions = font.MeasureString(tempString);
-            Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth - stringDimensions.X - 10, Globals.ScreenHeight - stringDimensions.Y), Color.Black);
-
             base.Draw(offset);
         }
     }

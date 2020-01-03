@@ -1,6 +1,8 @@
 ﻿#region Includes
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,6 +12,12 @@ namespace BravoGame
 {
     public class World
     {
+        public int FirstNumber;
+        public int SecondNumer;
+        public int Result;
+
+        public SpriteFont font;
+
         public int Points;
 
         public Vector2 Offset;
@@ -18,7 +26,7 @@ namespace BravoGame
 
         public List<Projectile2d> Projectiles = new List<Projectile2d>();
         public List<Mob> Mobs = new List<Mob>();
-        public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
+        public SpawnPoint SpawnPoint = new SpawnPoint();
 
         public World()
         {
@@ -29,21 +37,25 @@ namespace BravoGame
             GameGlobals.PassMob = AddMobs;
             Offset = new Vector2(0, 0);
 
-            SpawnPoints.Add(new SpawnPoint(new Vector2(200, 200)));
-            SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth / 2, 200)));
-            SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth - 200, 200)));
+            font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
+            MathOperation();
 
             Ui = new UI();
+        }
+
+        private void MathOperation()
+        {
+            var random = new Random();
+            FirstNumber = random.Next(1, 100);
+            SecondNumer = random.Next(1, 100);
+            Result = FirstNumber + FirstNumber;
         }
 
         public virtual void Update()
         {
             Hero.Update(Offset);
 
-            for (int i = 0; i < SpawnPoints.Count; i++)
-            {
-                SpawnPoints[i].Update(Offset);
-            }
+            SpawnPoint.Update(Offset);
 
             for (int i = 0; i < Projectiles.Count; i++)
             {
@@ -96,6 +108,10 @@ namespace BravoGame
             }
 
             Ui.Draw(this);
+
+            string tempString = $"{FirstNumber} + {SecondNumer} = ?";
+            Vector2 stringDimensions = font.MeasureString(tempString);
+            Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth - stringDimensions.X - 10, Globals.ScreenHeight - stringDimensions.Y), Color.Black);
         }
     }
 }
