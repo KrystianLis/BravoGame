@@ -48,6 +48,7 @@
     <Compile Include="Source\Engine\GamePlay\World\Projectile2d.cs" />
     <Compile Include="Source\Engine\GamePlay\World\Projectiles\FireBall.cs" />
     <Compile Include="Source\Engine\GamePlay\World\SpawnPoint.cs" />
+    <Compile Include="Source\Engine\GamePlay\World\UI.cs" />
     <Compile Include="Source\Engine\GamePlay\World\Unit.cs" />
     <Compile Include="Source\Engine\GamePlay\World\Units\Mob.cs" />
     <Compile Include="Source\Engine\GamePlay\World\Units\Hero.cs" />
