@@ -10,14 +10,20 @@ namespace BravoGame
 {
     public class World
     {
+        public int Points;
+
         public Vector2 Offset;
         public Hero Hero;
+        public UI Ui;
+
         public List<Projectile2d> Projectiles = new List<Projectile2d>();
         public List<Mob> Mobs = new List<Mob>();
         public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
 
         public World()
         {
+            Points = 0;
+
             Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
             GameGlobals.PassProjectiles = AddProjectiles;
             GameGlobals.PassMob = AddMobs;
@@ -28,6 +34,8 @@ namespace BravoGame
             SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(500);
             SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth - 200, 200)));
             SpawnPoints[SpawnPoints.Count - 1].spawnTimer.AddToTimer(1000);
+
+            Ui = new UI();
         }
 
         public virtual void Update()
@@ -56,10 +64,13 @@ namespace BravoGame
 
                 if (Mobs[i].Dead)
                 {
+                    Points++;
                     Mobs.RemoveAt(i);
                     i--;
                 }
             }
+
+            Ui.Update(this);
         }
 
         public virtual void AddProjectiles(object info)
@@ -85,6 +96,8 @@ namespace BravoGame
             {
                 Mobs[i].Draw(Offset);
             }
+
+            Ui.Draw(this);
         }
     }
 }
