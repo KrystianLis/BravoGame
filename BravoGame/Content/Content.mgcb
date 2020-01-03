@@ -25,6 +25,13 @@
 /processorParam:TextureFormat=Color
 /build:Cursor/cursor .png;Cursor/cursor.png
 
+#begin Fonts/GameFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/GameFont.spritefont
+
 #begin Heroes/Hero.png
 /importer:TextureImporter
 /processor:TextureProcessor
