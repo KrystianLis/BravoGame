@@ -12,6 +12,7 @@ namespace BravoGame
 {
     public delegate void PassObject(object obj);
     public delegate object PassObjectAndRetrun(object obj);
+    public delegate void PassValues(int x, int y, int z);
 
     public class Globals
     {
@@ -74,7 +75,7 @@ namespace BravoGame
             }
             else if (Pos.X - focus.X == 0 && Pos.Y - focus.Y > 0)
             {
-                angle = (float)0;
+                angle = 0;
             }
             else if (Pos.X - focus.X == 0 && Pos.Y - focus.Y < 0)
             {
