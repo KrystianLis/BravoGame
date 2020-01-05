@@ -1,6 +1,8 @@
 ﻿#region Includes
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,40 +12,51 @@ namespace BravoGame
 {
     public class World
     {
-        public int Points;
+        public int FirstNumber;
+        public int SecondNumer;
+        public int Result;
+        public int Miss;
+
+        public int Score;
+       
+        public SpriteFont font;
 
         public Vector2 Offset;
-        public Hero Hero;
-        public UI Ui;
 
-        public List<Projectile2d> Projectiles = new List<Projectile2d>();
-        public List<Mob> Mobs = new List<Mob>();
-        public List<SpawnPoint> SpawnPoints = new List<SpawnPoint>();
+        public Hero Hero;
+        public UI UI;
+
+        public List<Projectile2d> Projectiles;
+        public List<Mob> Mobs;
+        public SpawnPoint SpawnPoint;
 
         public World()
         {
-            Points = 0;
-
-            Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
+            GameGlobals.PassValues = GetValues;
             GameGlobals.PassProjectiles = AddProjectiles;
             GameGlobals.PassMob = AddMobs;
+            GameGlobals.InvokeRemovingMobs = RemoveMobs;
+
+            Projectiles = new List<Projectile2d>();
+            Mobs = new List<Mob>();
+            SpawnPoint = new SpawnPoint();
+
+            Score = 0;
+            Miss = 0;
+
+            Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
+            font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
+
             Offset = new Vector2(0, 0);
 
-            SpawnPoints.Add(new SpawnPoint(new Vector2(200, 200)));
-            SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth / 2, 200)));
-            SpawnPoints.Add(new SpawnPoint(new Vector2(Globals.ScreenWidth - 200, 200)));
-
-            Ui = new UI();
+            UI = new UI();
         }
 
         public virtual void Update()
         {
             Hero.Update(Offset);
 
-            for (int i = 0; i < SpawnPoints.Count; i++)
-            {
-                SpawnPoints[i].Update(Offset);
-            }
+            SpawnPoint.Update(Offset);
 
             for (int i = 0; i < Projectiles.Count; i++)
             {
@@ -62,13 +75,22 @@ namespace BravoGame
 
                 if (Mobs[i].Dead)
                 {
-                    Points++;
+                    if(Mobs[i].Result == Result)
+                    {
+                        Score++;
+                    }
+                    else
+                    {
+                        Miss++;
+                        Hero.Health--;
+                    }
+
                     Mobs.RemoveAt(i);
                     i--;
                 }
             }
 
-            Ui.Update(this);
+            UI.Update(this);
         }
 
         public virtual void AddProjectiles(object info)
@@ -79,6 +101,18 @@ namespace BravoGame
         public virtual void AddMobs(object info)
         {
             Mobs.Add((Mob)info);
+        }
+
+        public virtual void RemoveMobs()
+        {
+            Mobs.Clear();
+        }
+
+        public virtual void GetValues(int firstValue, int secondValue, int result)
+        {
+            FirstNumber = firstValue;
+            SecondNumer = secondValue;
+            Result = result;
         }
 
         public virtual void Draw(Vector2 offset)
@@ -95,7 +129,11 @@ namespace BravoGame
                 Mobs[i].Draw(Offset);
             }
 
-            Ui.Draw(this);
+            UI.Draw(this);
+
+            string tempString = $"{FirstNumber} + {SecondNumer} = ?";
+            Vector2 stringDimensions = font.MeasureString(tempString);
+            Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth - stringDimensions.X - 10, Globals.ScreenHeight - stringDimensions.Y), Color.Black);
         }
     }
 }
