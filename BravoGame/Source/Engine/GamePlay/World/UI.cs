@@ -27,6 +27,13 @@ namespace BravoGame
             Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight - stringDimensions.Y), Color.Black);
             
             HealthBar.Draw(new Vector2(20, Globals.ScreenHeight - 40));
+
+            if (world.Hero.Dead)
+            {
+                tempString = $"You lost! Press Enter to Restart";
+                stringDimensions = font.MeasureString(tempString);
+                Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight / 2), Color.Black);
+            }
         }
     }
 }

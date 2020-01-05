@@ -30,8 +30,12 @@ namespace BravoGame
         public List<Mob> Mobs;
         public SpawnPoint SpawnPoint;
 
-        public World()
+        PassObject ResetWorld;
+
+        public World(PassObject reseWorld)
         {
+            ResetWorld = reseWorld;
+
             GameGlobals.PassValues = GetValues;
             GameGlobals.PassProjectiles = AddProjectiles;
             GameGlobals.PassMob = AddMobs;
@@ -54,39 +58,54 @@ namespace BravoGame
 
         public virtual void Update()
         {
-            Hero.Update(Offset);
-
-            SpawnPoint.Update(Offset);
-
-            for (int i = 0; i < Projectiles.Count; i++)
+            if(Hero.Dead == false)
             {
-                Projectiles[i].Update(Offset, Mobs.ToList<Unit>());
+                Hero.Update(Offset);
 
-                if(Projectiles[i].Done)
+                SpawnPoint.Update(Offset);
+
+                for (int i = 0; i < Projectiles.Count; i++)
                 {
-                    Projectiles.RemoveAt(i);
-                    i--;
+                    Projectiles[i].Update(Offset, Mobs.ToList<Unit>());
+
+                    if (Projectiles[i].Done)
+                    {
+                        Projectiles.RemoveAt(i);
+                        i--;
+                    }
+                }
+
+                for (int i = 0; i < Mobs.Count; i++)
+                {
+                    Mobs[i].Update(Offset, Hero);
+
+                    if (Mobs[i].Dead)
+                    {
+                        if (Mobs[i].Result == Result)
+                        {
+                            Score++;
+                        }
+                        else
+                        {
+                            Miss++;
+                            Hero.Health--;
+
+                            if (Hero.Health == 0)
+                            {
+                                Hero.Dead = true;
+                            }
+                        }
+
+                        Mobs.RemoveAt(i);
+                        i--;
+                    }
                 }
             }
-
-            for (int i = 0; i < Mobs.Count; i++)
+            else
             {
-                Mobs[i].Update(Offset, Hero);
-
-                if (Mobs[i].Dead)
+                if (Globals.Keyboard.GetPress("Enter"))
                 {
-                    if(Mobs[i].Result == Result)
-                    {
-                        Score++;
-                    }
-                    else
-                    {
-                        Miss++;
-                        Hero.Health--;
-                    }
-
-                    Mobs.RemoveAt(i);
-                    i--;
+                    ResetWorld(null);
                 }
             }
 

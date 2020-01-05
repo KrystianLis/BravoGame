@@ -61,6 +61,7 @@
     <Compile Include="Source\Engine\Input\Keyboard\MyKey.cs" />
     <Compile Include="Source\Engine\GamePlay\World.cs" />
     <Compile Include="Source\Engine\Output\QuantityDisplayBar.cs" />
+    <Compile Include="Source\GamePlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
