@@ -109,7 +109,6 @@ namespace BravoGame
                 }
             }
 
-
             UI.Update(this);
         }
 
