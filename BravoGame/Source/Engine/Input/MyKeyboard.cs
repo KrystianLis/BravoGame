@@ -46,6 +46,28 @@ namespace BravoGame
             return false;
         }
 
+        public bool GetSinglePress(string key)
+        {
+            for (int i = 0; i < PressedKeys.Count; i++)
+            {
+                bool isIn = false;
+
+                for (int j = 0; j < PreviousPressedKeys.Count; j++)
+                {
+                    isIn = true;
+
+                    break;
+                }
+
+                if(!isIn && (PressedKeys[i].Key == key || PressedKeys[i].Print == key))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public virtual void GetPressedKeys()
         {
             bool Found = false;

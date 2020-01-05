@@ -58,7 +58,7 @@ namespace BravoGame
 
         public virtual void Update()
         {
-            if(Hero.Dead == false)
+            if(!Hero.Dead && !GameGlobals.Pause)
             {
                 Hero.Update(Offset);
 
@@ -107,6 +107,11 @@ namespace BravoGame
                 {
                     ResetWorld(null);
                 }
+            }
+
+            if (Globals.Keyboard.GetSinglePress("Space"))
+            {
+                GameGlobals.Pause = !GameGlobals.Pause;
             }
 
             UI.Update(this);
