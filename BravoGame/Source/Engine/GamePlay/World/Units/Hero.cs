@@ -1,6 +1,8 @@
 ﻿#region Includes
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 #endregion
 
@@ -11,8 +13,7 @@ namespace BravoGame
         public Hero(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
         {
             Speed = 2.0f;
-
-            Health = 1;
+            Health = 5;
             HealthMax = Health;
         }
 

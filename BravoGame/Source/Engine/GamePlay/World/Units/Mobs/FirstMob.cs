@@ -8,9 +8,8 @@ namespace BravoGame
 {
     public class FirstMob : Mob
     {
-        public FirstMob(Vector2 position) : base(@"Mobs\death_scythe", position, new Vector2(40, 47))
+        public FirstMob(Vector2 position, int result) : base(@"Mobs\death_scythe", position, new Vector2(40, 47), result)
         {
-            Speed = 2.0f;
         }
 
         public override void Update(Vector2 offset, Hero hero)
@@ -19,7 +18,7 @@ namespace BravoGame
         }
 
         public override void Draw(Vector2 offset)
-        {
+        {          
             base.Draw(offset);
         }
     }

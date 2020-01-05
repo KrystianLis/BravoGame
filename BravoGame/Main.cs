@@ -10,8 +10,8 @@ namespace BravoGame
     public class Main : Game
     {
         GraphicsDeviceManager graphics;
-        World world;
         Basic2d cursor;
+        GamePlay gamePlay;
 
         public Main()
         {
@@ -51,7 +51,7 @@ namespace BravoGame
             Globals.Keyboard = new MyKeyboard();
             Globals.Mouse = new MyMouseControl();
 
-            world = new World();
+            gamePlay = new GamePlay();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace BravoGame
             Globals.Keyboard.Update();
             Globals.Mouse.Update();
 
-            world.Update();
+            gamePlay.Update();
 
             Globals.Keyboard.UpdateOld();
             Globals.Mouse.UpdateOld();
@@ -94,7 +94,7 @@ namespace BravoGame
 
             Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
-            world.Draw(Vector2.Zero);
+            gamePlay.Draw();
             cursor.Draw(new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMouse.Y), new Vector2(0, 0), Color.White);
 
             Globals.spriteBatch.End();
