@@ -58,6 +58,7 @@ namespace BravoGame
 
         public virtual void SpawnMob(IList<int> result)
         {
+            GameGlobals.InvokeRemovingMobs();
             GameGlobals.PassMob(new FirstMob(new Vector2(200, 200), result[0]));
             GameGlobals.PassMob(new FirstMob(new Vector2(Globals.ScreenWidth / 2, 200), result[1]));
             GameGlobals.PassMob(new FirstMob(new Vector2(Globals.ScreenWidth - 200, 200), result[2]));

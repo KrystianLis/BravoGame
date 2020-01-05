@@ -10,7 +10,6 @@ namespace BravoGame
     {
         public FirstMob(Vector2 position, int result) : base(@"Mobs\death_scythe", position, new Vector2(40, 47), result)
         {
-            Speed = 2.0f;
         }
 
         public override void Update(Vector2 offset, Hero hero)

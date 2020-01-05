@@ -15,6 +15,7 @@ namespace BravoGame
         public int FirstNumber;
         public int SecondNumer;
         public int Result;
+        public int Miss;
 
         public int Score;
        
@@ -34,12 +35,14 @@ namespace BravoGame
             GameGlobals.PassValues = GetValues;
             GameGlobals.PassProjectiles = AddProjectiles;
             GameGlobals.PassMob = AddMobs;
+            GameGlobals.InvokeRemovingMobs = RemoveMobs;
 
             Projectiles = new List<Projectile2d>();
             Mobs = new List<Mob>();
             SpawnPoint = new SpawnPoint();
 
             Score = 0;
+            Miss = 0;
 
             Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
             font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
@@ -72,7 +75,15 @@ namespace BravoGame
 
                 if (Mobs[i].Dead)
                 {
-                    Score++;
+                    if(Mobs[i].Result == Result)
+                    {
+                        Score++;
+                    }
+                    else
+                    {
+                        Miss++;
+                    }
+
                     Mobs.RemoveAt(i);
                     i--;
                 }
@@ -89,6 +100,11 @@ namespace BravoGame
         public virtual void AddMobs(object info)
         {
             Mobs.Add((Mob)info);
+        }
+
+        public virtual void RemoveMobs()
+        {
+            Mobs.Clear();
         }
 
         public virtual void GetValues(int firstValue, int secondValue, int result)

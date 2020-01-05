@@ -11,7 +11,7 @@ namespace BravoGame
     {
         public SpriteFont font;
 
-        int Result;
+        public int Result;
 
         public Mob(string path, Vector2 position, Vector2 dimensions, int result) : base(path, position, dimensions)
         {
@@ -23,16 +23,6 @@ namespace BravoGame
         {
             base.Update(offset);
         }
-
-        // TODO: Add mathematical logic
-        //public virtual void MethematicalLogic(Hero hero)
-        //{
-        //    if()
-        //    {
-        //        hero.GetHit(1);
-        //        Dead = true;
-        //    }
-        //}
 
         public override void Draw(Vector2 offset)
         {
