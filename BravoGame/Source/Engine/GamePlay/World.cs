@@ -82,6 +82,7 @@ namespace BravoGame
                     else
                     {
                         Miss++;
+                        Hero.Health--;
                     }
 
                     Mobs.RemoveAt(i);
