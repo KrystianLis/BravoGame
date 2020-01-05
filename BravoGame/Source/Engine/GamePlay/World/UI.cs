@@ -37,7 +37,7 @@ namespace BravoGame
 
             if (GameGlobals.Pause)
             {
-                tempString = $"Pause";
+                tempString = $"Paused";
                 stringDimensions = font.MeasureString(tempString);
                 Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight / 2), Color.Black);
             }

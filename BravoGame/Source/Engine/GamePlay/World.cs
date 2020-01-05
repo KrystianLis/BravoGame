@@ -23,6 +23,7 @@ namespace BravoGame
 
         public Vector2 Offset;
 
+        public TileBackground2d TileBackground2D;
         public Hero Hero;
         public UI UI;
 
@@ -54,6 +55,8 @@ namespace BravoGame
             Offset = new Vector2(0, 0);
 
             UI = new UI();
+
+            TileBackground2D = new TileBackground2d(@"Backgrounds\StandardGrass", new Vector2(-100, -100), new Vector2(120, 100), new Vector2(1024 + 100, 768 + 100));
         }
 
         public virtual void Update()
@@ -141,6 +144,8 @@ namespace BravoGame
 
         public virtual void Draw(Vector2 offset)
         {
+            TileBackground2D.Draw(offset);
+
             Hero.Draw(offset);
 
             for (int i = 0; i < Projectiles.Count; i++)

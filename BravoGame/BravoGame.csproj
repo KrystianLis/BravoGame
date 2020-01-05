@@ -61,6 +61,7 @@
     <Compile Include="Source\Engine\Input\Keyboard\MyKey.cs" />
     <Compile Include="Source\Engine\GamePlay\World.cs" />
     <Compile Include="Source\Engine\Output\QuantityDisplayBar.cs" />
+    <Compile Include="Source\Engine\Output\TileBackground2d.cs" />
     <Compile Include="Source\GamePlay.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +82,9 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
     <None Include="ClassDiagram.cd" />
+    <None Include="Content\Backgrounds\StandardGrass.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Misc\shade.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
