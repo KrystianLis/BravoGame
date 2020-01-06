@@ -46,18 +46,14 @@ namespace BravoGame
 
             angle = (float)Math.Asin(sineTheta);
 
-            // Drawing diagonial lines here.
-            // Quadrant 2
             if (Pos.X - focus.X > 0 && Pos.Y - focus.Y > 0)
             {
                 angle = (float)(Math.PI * 3 / 2 + angle);
             }
-            // Quadrant 3
             else if (Pos.X - focus.X > 0 && Pos.Y - focus.Y < 0)
             {
                 angle = (float)(Math.PI * 3 / 2 - angle);
             }
-            // Quadrant 1
             else if (Pos.X - focus.X < 0 && Pos.Y - focus.Y > 0)
             {
                 angle = (float)(Math.PI / 2 - angle);

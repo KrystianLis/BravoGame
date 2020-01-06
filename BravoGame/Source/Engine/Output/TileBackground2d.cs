@@ -25,7 +25,6 @@ namespace BravoGame
                     if(i < numX - 1 && j < numY - 1)
                     {
                         base.Draw(offset + new Vector2(Dimensions.X / 2 + Dimensions.X * i, Dimensions.Y / 2 + Dimensions.Y * j));
-
                     }
                     else
                     {
