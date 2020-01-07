@@ -1,43 +1,42 @@
-﻿#region Includes
-
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
-
-#endregion
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using System.Collections.Generic;
+
+    using Microsoft.Xna.Framework.Input;
+
+    #endregion
+
+    /// <summary>
+    /// The my keyboard.
+    /// </summary>
     public class MyKeyboard
     {
+        /// <summary>
+        /// The new keyboard.
+        /// </summary>
         public KeyboardState NewKeyboard, OldKeyboard;
+
+        /// <summary>
+        /// The pressed keys.
+        /// </summary>
         public List<MyKey> PressedKeys = new List<MyKey>(), PreviousPressedKeys = new List<MyKey>();
 
-        public MyKeyboard()
-        {
-        }
-
-        public virtual void Update()
-        {
-            NewKeyboard = Keyboard.GetState();
-            GetPressedKeys();
-        }
-
-        public void UpdateOld()
-        {
-            OldKeyboard = NewKeyboard;
-            PreviousPressedKeys = new List<MyKey>();
-
-            for (int i = 0; i < PressedKeys.Count; i++)
-            {
-                PreviousPressedKeys.Add(PressedKeys[i]);
-            }
-        }
-
+        /// <summary>
+        /// The get press.
+        /// </summary>
+        /// <param name="key">
+        /// The key.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool GetPress(string key)
         {
-            for (int i = 0; i < PressedKeys.Count; i++)
+            for (var i = 0; i < this.PressedKeys.Count; i++)
             {
-                if (PressedKeys[i].Key == key)
+                if (this.PressedKeys[i].Key == key)
                 {
                     return true;
                 }
@@ -46,20 +45,42 @@ namespace BravoGame
             return false;
         }
 
+        /// <summary>
+        /// The get pressed keys.
+        /// </summary>
+        public virtual void GetPressedKeys()
+        {
+            this.PressedKeys.Clear();
+
+            for (var i = 0; i < this.NewKeyboard.GetPressedKeys().Length; i++)
+            {
+                this.PressedKeys.Add(new MyKey(this.NewKeyboard.GetPressedKeys()[i].ToString(), 1));
+            }
+        }
+
+        /// <summary>
+        /// The get single press.
+        /// </summary>
+        /// <param name="key">
+        /// The key.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool GetSinglePress(string key)
         {
-            for (int i = 0; i < PressedKeys.Count; i++)
+            for (var i = 0; i < this.PressedKeys.Count; i++)
             {
-                bool isIn = false;
+                var isIn = false;
 
-                for (int j = 0; j < PreviousPressedKeys.Count; j++)
+                for (var j = 0; j < this.PreviousPressedKeys.Count; j++)
                 {
                     isIn = true;
 
                     break;
                 }
 
-                if(!isIn && (PressedKeys[i].Key == key || PressedKeys[i].Print == key))
+                if (!isIn && (this.PressedKeys[i].Key == key || this.PressedKeys[i].Print == key))
                 {
                     return true;
                 }
@@ -68,14 +89,26 @@ namespace BravoGame
             return false;
         }
 
-        public virtual void GetPressedKeys()
+        /// <summary>
+        /// The update.
+        /// </summary>
+        public virtual void Update()
         {
-            bool Found = false;
-            PressedKeys.Clear();
+            this.NewKeyboard = Keyboard.GetState();
+            this.GetPressedKeys();
+        }
 
-            for (int i = 0; i < NewKeyboard.GetPressedKeys().Length; i++)
+        /// <summary>
+        /// The update old.
+        /// </summary>
+        public void UpdateOld()
+        {
+            this.OldKeyboard = this.NewKeyboard;
+            this.PreviousPressedKeys = new List<MyKey>();
+
+            for (var i = 0; i < this.PressedKeys.Count; i++)
             {
-                PressedKeys.Add(new MyKey(NewKeyboard.GetPressedKeys()[i].ToString(), 1));
+                this.PreviousPressedKeys.Add(this.PressedKeys[i]);
             }
         }
     }

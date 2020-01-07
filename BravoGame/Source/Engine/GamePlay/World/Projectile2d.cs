@@ -1,51 +1,100 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using System.Collections.Generic;
+
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
+    /// <summary>
+    /// The projectile 2 d.
+    /// </summary>
     public class Projectile2d : Basic2d
     {
-        public bool Done;
-        public float Speed;
+        /// <summary>
+        /// The direction.
+        /// </summary>
         public Vector2 Direction;
+
+        /// <summary>
+        /// The done.
+        /// </summary>
+        public bool Done;
+
+        /// <summary>
+        /// The owner.
+        /// </summary>
         public Unit Owner;
+
+        /// <summary>
+        /// The speed.
+        /// </summary>
+        public float Speed;
+
+        /// <summary>
+        /// The Timer.
+        /// </summary>
         public MyTimer Timer;
 
-        public Projectile2d(string path, Vector2 position, Vector2 dimensions, Unit owner, Vector2 target) : base(path, position, dimensions)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Projectile2d"/> class.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        /// <param name="position">
+        /// The position.
+        /// </param>
+        /// <param name="dimensions">
+        /// The dimensions.
+        /// </param>
+        /// <param name="owner">
+        /// The owner.
+        /// </param>
+        /// <param name="target">
+        /// The target.
+        /// </param>
+        public Projectile2d(string path, Vector2 position, Vector2 dimensions, Unit owner, Vector2 target)
+            : base(path, position, dimensions)
         {
-            Speed = 5.0f;
-            Owner = owner;
-            Direction = target - owner.Position;
-            Direction.Normalize();
-            Rotation = Globals.RotateTowards(position, new Vector2(target.X - 360, target.Y - 360));
-            Timer = new MyTimer(4000);
+            this.Speed = 5.0f;
+            this.Owner = owner;
+            this.Direction = target - owner.Position;
+            this.Direction.Normalize();
+            this.Rotation = Globals.RotateTowards(position, new Vector2(target.X - 360, target.Y - 360));
+            this.Timer = new MyTimer(4000);
         }
 
-        public virtual void Update(Vector2 offset, List<Unit> units)
+        /// <summary>
+        /// The draw.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
+        public override void Draw(Vector2 offset)
         {
-            Position += Direction * Speed;
-
-            Timer.UpdateTimer();
-
-            if(Timer.Test())
-            {
-                Done = true;
-            }
-
-            if(HitSomething(units))
-            {
-                Done = true;
-            }
+            base.Draw(offset);
         }
 
+        /// <summary>
+        /// The hit something.
+        /// </summary>
+        /// <param name="units">
+        /// The units.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public virtual bool HitSomething(List<Unit> units)
         {
-            for (int i = 0; i < units.Count; i++)
+            foreach (Unit t in units)
             {
-                if(Globals.GetDistance(Position, units[i].Position) < units[i].HitDistance)
+                if (Globals.GetDistance(this.Position, t.Position) < t.HitDistance)
                 {
-                    units[i].GetHit(1);
-                    
+                    t.GetHit(1);
+
                     return true;
                 }
             }
@@ -53,9 +102,30 @@ namespace BravoGame
             return false;
         }
 
-        public override void Draw(Vector2 offset)
+        /// <summary>
+        /// The update.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
+        /// <param name="units">
+        /// The units.
+        /// </param>
+        public virtual void Update(Vector2 offset, List<Unit> units)
         {
-            base.Draw(offset);
+            this.Position += this.Direction * this.Speed;
+
+            this.Timer.UpdateTimer();
+
+            if (this.Timer.Test())
+            {
+                this.Done = true;
+            }
+
+            if (this.HitSomething(units))
+            {
+                this.Done = true;
+            }
         }
     }
 }

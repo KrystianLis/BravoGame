@@ -1,22 +1,63 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+
+    #endregion
+
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Main : Game
     {
-        GraphicsDeviceManager graphics;
+        /// <summary>
+        /// The cursor.
+        /// </summary>
         Basic2d cursor;
+
+        /// <summary>
+        /// The game play.
+        /// </summary>
         GamePlay gamePlay;
 
+        /// <summary>
+        /// The graphics.
+        /// </summary>
+        readonly GraphicsDeviceManager graphics;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Main"/> class.
+        /// </summary>
         public Main()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            this.graphics = new GraphicsDeviceManager(this);
+            this.Content.RootDirectory = "Content";
+        }
+
+        /// <summary>
+        /// This is called when the game should draw itself.
+        /// </summary>
+        /// <param name="gameTime">
+        /// Provides a snapshot of timing values.
+        /// </param>
+        protected override void Draw(GameTime gameTime)
+        {
+            this.GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+
+            this.gamePlay.Draw();
+            this.cursor.Draw(
+                new Vector2(Globals.Mouse.NewMousePosition.X, Globals.Mouse.NewMouse.Y),
+                new Vector2(0, 0),
+                Color.White);
+
+            Globals.spriteBatch.End();
+
+            base.Draw(gameTime);
         }
 
         /// <summary>
@@ -30,9 +71,9 @@ namespace BravoGame
             Globals.ScreenWidth = 1024;
             Globals.ScreenHeight = 768;
 
-            graphics.PreferredBackBufferWidth = Globals.ScreenWidth;
-            graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
-            graphics.ApplyChanges();
+            this.graphics.PreferredBackBufferWidth = Globals.ScreenWidth;
+            this.graphics.PreferredBackBufferHeight = Globals.ScreenHeight;
+            this.graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -44,14 +85,14 @@ namespace BravoGame
         protected override void LoadContent()
         {
             Globals.Content = this.Content;
-            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.spriteBatch = new SpriteBatch(this.GraphicsDevice);
 
-            cursor = new Basic2d(@"Cursor\cursor", new Vector2(0, 0), new Vector2(24, 24));
+            this.cursor = new Basic2d(@"Cursor\cursor", new Vector2(0, 0), new Vector2(24, 24));
 
             Globals.Keyboard = new MyKeyboard();
             Globals.Mouse = new MyMouseControl();
 
-            gamePlay = new GamePlay();
+            this.gamePlay = new GamePlay();
         }
 
         /// <summary>
@@ -66,40 +107,24 @@ namespace BravoGame
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// <param name="gameTime">
+        /// Provides a snapshot of timing values.
+        /// </param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
+                || Keyboard.GetState().IsKeyDown(Keys.Escape)) this.Exit();
 
             Globals.GameTime = gameTime;
             Globals.Keyboard.Update();
             Globals.Mouse.Update();
 
-            gamePlay.Update();
+            this.gamePlay.Update();
 
             Globals.Keyboard.UpdateOld();
             Globals.Mouse.UpdateOld();
 
             base.Update(gameTime);
-        }
-
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-
-            gamePlay.Draw();
-            cursor.Draw(new Vector2(Globals.Mouse.newMousePosition.X, Globals.Mouse.newMouse.Y), new Vector2(0, 0), Color.White);
-
-            Globals.spriteBatch.End();
-
-            base.Draw(gameTime);
         }
     }
 
@@ -114,8 +139,7 @@ namespace BravoGame
         /// </summary>
         static void Main()
         {
-            using (var game = new Main())
-                game.Run();
+            using (var game = new Main()) game.Run();
         }
     }
 #endif

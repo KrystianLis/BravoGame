@@ -1,105 +1,255 @@
-﻿#region Includes
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-#endregion
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
+    /// <summary>
+    /// The world.
+    /// </summary>
     public class World
     {
+        /// <summary>
+        /// The first number.
+        /// </summary>
         public int FirstNumber;
-        public int SecondNumer;
-        public int Result;
+
+        /// <summary>
+        /// The Font.
+        /// </summary>
+        public SpriteFont Font;
+
+        /// <summary>
+        /// The hero.
+        /// </summary>
+        public Hero Hero;
+
+        /// <summary>
+        /// The miss.
+        /// </summary>
         public int Miss;
 
-        public int Score;
-       
-        public SpriteFont font;
+        /// <summary>
+        /// The mobs.
+        /// </summary>
+        public List<Mob> Mobs;
 
+        /// <summary>
+        /// The offset.
+        /// </summary>
         public Vector2 Offset;
 
-        public TileBackground2d TileBackground2D;
-        public Hero Hero;
-        public UI UI;
-
+        /// <summary>
+        /// The projectiles.
+        /// </summary>
         public List<Projectile2d> Projectiles;
-        public List<Mob> Mobs;
+
+        /// <summary>
+        /// The result.
+        /// </summary>
+        public int Result;
+
+        /// <summary>
+        /// The score.
+        /// </summary>
+        public int Score;
+
+        /// <summary>
+        /// The second numer.
+        /// </summary>
+        public int SecondNumer;
+
+        /// <summary>
+        /// The spawn point.
+        /// </summary>
         public SpawnPoint SpawnPoint;
 
-        PassObject ResetWorld;
+        /// <summary>
+        /// The tile background 2 d.
+        /// </summary>
+        public TileBackground2d TileBackground2D;
 
+        /// <summary>
+        /// The ui.
+        /// </summary>
+        public UI UI;
+
+        /// <summary>
+        /// The reset world.
+        /// </summary>
+        readonly PassObject ResetWorld;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="World"/> class.
+        /// </summary>
+        /// <param name="reseWorld">
+        /// The rese world.
+        /// </param>
         public World(PassObject reseWorld)
         {
-            ResetWorld = reseWorld;
+            this.ResetWorld = reseWorld;
 
-            GameGlobals.PassValues = GetValues;
-            GameGlobals.PassProjectiles = AddProjectiles;
-            GameGlobals.PassMob = AddMobs;
-            GameGlobals.InvokeRemovingMobs = RemoveMobs;
+            GameGlobals.PassValues = this.GetValues;
+            GameGlobals.PassProjectiles = this.AddProjectiles;
+            GameGlobals.PassMob = this.AddMobs;
+            GameGlobals.InvokeRemovingMobs = this.RemoveMobs;
 
-            Projectiles = new List<Projectile2d>();
-            Mobs = new List<Mob>();
-            SpawnPoint = new SpawnPoint();
+            this.Projectiles = new List<Projectile2d>();
+            this.Mobs = new List<Mob>();
+            this.SpawnPoint = new SpawnPoint();
 
-            Score = 0;
-            Miss = 0;
+            this.Score = 0;
+            this.Miss = 0;
 
-            Hero = new Hero(@"Heroes\Hero", new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200), new Vector2(46, 60));
-            font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
+            this.Hero = new Hero(
+                @"Heroes\Hero",
+                new Vector2(Globals.ScreenWidth / 2, Globals.ScreenHeight / 2 + 200),
+                new Vector2(46, 60));
+            this.Font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
 
-            Offset = new Vector2(0, 0);
+            this.Offset = new Vector2(0, 0);
 
-            UI = new UI();
+            this.UI = new UI();
 
-            TileBackground2D = new TileBackground2d(@"Backgrounds\StandardGrass", new Vector2(-100, -100), new Vector2(120, 100), new Vector2(1024 + 100, 768 + 100));
+            this.TileBackground2D = new TileBackground2d(
+                @"Backgrounds\StandardGrass",
+                new Vector2(-100, -100),
+                new Vector2(120, 100),
+                new Vector2(1024 + 100, 768 + 100));
         }
 
+        /// <summary>
+        /// The add mobs.
+        /// </summary>
+        /// <param name="info">
+        /// The info.
+        /// </param>
+        public virtual void AddMobs(object info)
+        {
+            this.Mobs.Add((Mob)info);
+        }
+
+        /// <summary>
+        /// The add projectiles.
+        /// </summary>
+        /// <param name="info">
+        /// The info.
+        /// </param>
+        public virtual void AddProjectiles(object info)
+        {
+            this.Projectiles.Add((Projectile2d)info);
+        }
+
+        /// <summary>
+        /// The draw.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
+        public virtual void Draw(Vector2 offset)
+        {
+            this.TileBackground2D.Draw(offset);
+
+            this.Hero.Draw(offset);
+
+            for (var i = 0; i < this.Projectiles.Count; i++)
+            {
+                this.Projectiles[i].Draw(offset);
+            }
+
+            for (var i = 0; i < this.Mobs.Count; i++)
+            {
+                this.Mobs[i].Draw(this.Offset);
+            }
+
+            this.UI.Draw(this);
+
+            var tempString = $"{this.FirstNumber} + {this.SecondNumer} = ?";
+            var stringDimensions = this.Font.MeasureString(tempString);
+            Globals.spriteBatch.DrawString(
+                this.Font,
+                tempString,
+                new Vector2(Globals.ScreenWidth - stringDimensions.X - 10, Globals.ScreenHeight - stringDimensions.Y),
+                Color.Black);
+        }
+
+        /// <summary>
+        /// The get values.
+        /// </summary>
+        /// <param name="firstValue">
+        /// The first value.
+        /// </param>
+        /// <param name="secondValue">
+        /// The second value.
+        /// </param>
+        /// <param name="result">
+        /// The result.
+        /// </param>
+        public virtual void GetValues(int firstValue, int secondValue, int result)
+        {
+            this.FirstNumber = firstValue;
+            this.SecondNumer = secondValue;
+            this.Result = result;
+        }
+
+        /// <summary>
+        /// The remove mobs.
+        /// </summary>
+        public virtual void RemoveMobs()
+        {
+            this.Mobs.Clear();
+        }
+
+        /// <summary>
+        /// The update.
+        /// </summary>
         public virtual void Update()
         {
-            if(!Hero.Dead && !GameGlobals.Pause)
+            if (!this.Hero.Dead && !GameGlobals.Pause)
             {
-                Hero.Update(Offset);
+                this.Hero.Update(this.Offset);
 
-                SpawnPoint.Update(Offset);
+                this.SpawnPoint.Update(this.Offset);
 
-                for (int i = 0; i < Projectiles.Count; i++)
+                for (var i = 0; i < this.Projectiles.Count; i++)
                 {
-                    Projectiles[i].Update(Offset, Mobs.ToList<Unit>());
+                    this.Projectiles[i].Update(this.Offset, this.Mobs.ToList<Unit>());
 
-                    if (Projectiles[i].Done)
+                    if (this.Projectiles[i].Done)
                     {
-                        Projectiles.RemoveAt(i);
+                        this.Projectiles.RemoveAt(i);
                         i--;
                     }
                 }
 
-                for (int i = 0; i < Mobs.Count; i++)
+                for (var i = 0; i < this.Mobs.Count; i++)
                 {
-                    Mobs[i].Update(Offset, Hero);
+                    this.Mobs[i].Update(this.Offset, this.Hero);
 
-                    if (Mobs[i].Dead)
+                    if (this.Mobs[i].Dead)
                     {
-                        if (Mobs[i].Result == Result)
+                        if (this.Mobs[i].Result == this.Result)
                         {
-                            Score++;
+                            this.Score++;
                         }
                         else
                         {
-                            Miss++;
-                            Hero.Health--;
+                            this.Miss++;
+                            this.Hero.Health--;
 
-                            if (Hero.Health == 0)
+                            if (this.Hero.Health == 0)
                             {
-                                Hero.Dead = true;
+                                this.Hero.Dead = true;
                             }
                         }
 
-                        Mobs.RemoveAt(i);
+                        this.Mobs.RemoveAt(i);
                         i--;
                     }
                 }
@@ -108,7 +258,7 @@ namespace BravoGame
             {
                 if (Globals.Keyboard.GetPress("Enter"))
                 {
-                    ResetWorld(null);
+                    this.ResetWorld(null);
                 }
             }
 
@@ -117,52 +267,7 @@ namespace BravoGame
                 GameGlobals.Pause = !GameGlobals.Pause;
             }
 
-            UI.Update(this);
-        }
-
-        public virtual void AddProjectiles(object info)
-        {
-            Projectiles.Add((Projectile2d)info);
-        }
-
-        public virtual void AddMobs(object info)
-        {
-            Mobs.Add((Mob)info);
-        }
-
-        public virtual void RemoveMobs()
-        {
-            Mobs.Clear();
-        }
-
-        public virtual void GetValues(int firstValue, int secondValue, int result)
-        {
-            FirstNumber = firstValue;
-            SecondNumer = secondValue;
-            Result = result;
-        }
-
-        public virtual void Draw(Vector2 offset)
-        {
-            TileBackground2D.Draw(offset);
-
-            Hero.Draw(offset);
-
-            for (int i = 0; i < Projectiles.Count; i++)
-            {
-                Projectiles[i].Draw(offset);
-            }
-
-            for (int i = 0; i < Mobs.Count; i++)
-            {
-                Mobs[i].Draw(Offset);
-            }
-
-            UI.Draw(this);
-
-            string tempString = $"{FirstNumber} + {SecondNumer} = ?";
-            Vector2 stringDimensions = font.MeasureString(tempString);
-            Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth - stringDimensions.X - 10, Globals.ScreenHeight - stringDimensions.Y), Color.Black);
+            this.UI.Update(this);
         }
     }
 }

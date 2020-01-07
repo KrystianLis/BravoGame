@@ -1,46 +1,88 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
+    /// <summary>
+    /// The ui.
+    /// </summary>
     public class UI
     {
-        public SpriteFont font;
+        /// <summary>
+        /// The Font.
+        /// </summary>
+        public SpriteFont Font;
 
+        /// <summary>
+        /// The health bar.
+        /// </summary>
         public QuantityDisplayBar HealthBar;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UI"/> class.
+        /// </summary>
         public UI()
         {
-            font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
-            HealthBar = new QuantityDisplayBar(new Vector2(104, 16), 2, Color.Red);
+            this.Font = Globals.Content.Load<SpriteFont>(@"Fonts\GameFont");
+            this.HealthBar = new QuantityDisplayBar(new Vector2(104, 16), 2, Color.Red);
         }
 
-        public void Update(World world)
-        {
-            HealthBar.Update(world.Hero.Health, world.Hero.HealthMax);
-        }
-
+        /// <summary>
+        /// The draw.
+        /// </summary>
+        /// <param name="world">
+        /// The world.
+        /// </param>
         public void Draw(World world)
         {
-            string tempString = $"Score = {world.Score}\nMiss = {world.Miss}";
-            Vector2 stringDimensions = font.MeasureString(tempString);
-            Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight - stringDimensions.Y), Color.Black);
-            
-            HealthBar.Draw(new Vector2(20, Globals.ScreenHeight - 40));
+            var tempString = $"Score = {world.Score}\nMiss = {world.Miss}";
+            var stringDimensions = this.Font.MeasureString(tempString);
+            Globals.spriteBatch.DrawString(
+                this.Font,
+                tempString,
+                new Vector2(
+                    Globals.ScreenWidth / 2 - stringDimensions.X / 2,
+                    Globals.ScreenHeight - stringDimensions.Y),
+                Color.Black);
+
+            this.HealthBar.Draw(new Vector2(20, Globals.ScreenHeight - 40));
 
             if (world.Hero.Dead)
             {
                 tempString = $"You lost! Press Enter to Restart";
-                stringDimensions = font.MeasureString(tempString);
-                Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight / 2), Color.Black);
+                stringDimensions = this.Font.MeasureString(tempString);
+                Globals.spriteBatch.DrawString(
+                    this.Font,
+                    tempString,
+                    new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight / 2),
+                    Color.Black);
             }
 
             if (GameGlobals.Pause)
             {
                 tempString = $"Paused";
-                stringDimensions = font.MeasureString(tempString);
-                Globals.spriteBatch.DrawString(font, tempString, new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight / 2), Color.Black);
+                stringDimensions = this.Font.MeasureString(tempString);
+                Globals.spriteBatch.DrawString(
+                    this.Font,
+                    tempString,
+                    new Vector2(Globals.ScreenWidth / 2 - stringDimensions.X / 2, Globals.ScreenHeight / 2),
+                    Color.Black);
             }
+        }
+
+        /// <summary>
+        /// The update.
+        /// </summary>
+        /// <param name="world">
+        /// The world.
+        /// </param>
+        public void Update(World world)
+        {
+            this.HealthBar.Update(world.Hero.Health, world.Hero.HealthMax);
         }
     }
 }

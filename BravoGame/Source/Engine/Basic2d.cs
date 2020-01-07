@@ -1,46 +1,118 @@
-﻿#region Includes
-
-using Microsoft.Xna.Framework;
-
-using Microsoft.Xna.Framework.Graphics;
-
-#endregion
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
+    /// <summary>
+    /// The basic 2 d.
+    /// </summary>
     public class Basic2d
     {
-        public float Rotation;
-        public Vector2 Position, Dimensions;
+        /// <summary>
+        /// The model.
+        /// </summary>
         public Texture2D Model;
 
+        /// <summary>
+        /// The position.
+        /// </summary>
+        public Vector2 Position, Dimensions;
+
+        /// <summary>
+        /// The rotation.
+        /// </summary>
+        public float Rotation;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Basic2d"/> class.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        /// <param name="position">
+        /// The position.
+        /// </param>
+        /// <param name="dimensions">
+        /// The dimensions.
+        /// </param>
         public Basic2d(string path, Vector2 position, Vector2 dimensions)
         {
-            Position = position;
-            Dimensions = dimensions;
+            this.Position = position;
+            this.Dimensions = dimensions;
 
-            Model = Globals.Content.Load<Texture2D>(path);
+            this.Model = Globals.Content.Load<Texture2D>(path);
         }
 
-        public virtual void Update(Vector2 offset)
-        {
-
-        }
-
+        /// <summary>
+        /// The draw.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
         public virtual void Draw(Vector2 offset)
         {
-            if(Model != null)
+            if (this.Model != null)
             {
-                Globals.spriteBatch.Draw(Model, new Rectangle((int)(Position.X + offset.X), (int)(Position.Y + offset.Y), (int)Dimensions.X, (int)Dimensions.Y), null, Color.White, Rotation, new Vector2(Model.Bounds.Width / 2, Model.Bounds.Height / 2), new SpriteEffects(), 0);
+                Globals.spriteBatch.Draw(
+                    this.Model,
+                    new Rectangle(
+                        (int)(this.Position.X + offset.X),
+                        (int)(this.Position.Y + offset.Y),
+                        (int)this.Dimensions.X,
+                        (int)this.Dimensions.Y),
+                    null,
+                    Color.White,
+                    this.Rotation,
+                    new Vector2(this.Model.Bounds.Width / 2, this.Model.Bounds.Height / 2),
+                    new SpriteEffects(),
+                    0);
             }
         }
 
+        /// <summary>
+        /// The draw.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
+        /// <param name="origin">
+        /// The origin.
+        /// </param>
+        /// <param name="color">
+        /// The color.
+        /// </param>
         public virtual void Draw(Vector2 offset, Vector2 origin, Color color)
         {
-            if (Model != null)
+            if (this.Model != null)
             {
-                Globals.spriteBatch.Draw(Model, new Rectangle((int)(Position.X + offset.X), (int)(Position.Y + offset.Y), (int)Dimensions.X, (int)Dimensions.Y), null, color, Rotation, new Vector2(origin.X, origin.Y), new SpriteEffects(), 0);
+                Globals.spriteBatch.Draw(
+                    this.Model,
+                    new Rectangle(
+                        (int)(this.Position.X + offset.X),
+                        (int)(this.Position.Y + offset.Y),
+                        (int)this.Dimensions.X,
+                        (int)this.Dimensions.Y),
+                    null,
+                    color,
+                    this.Rotation,
+                    new Vector2(origin.X, origin.Y),
+                    new SpriteEffects(),
+                    0);
             }
+        }
+
+        /// <summary>
+        /// The update.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
+        public virtual void Update(Vector2 offset)
+        {
         }
     }
 }

@@ -1,37 +1,65 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
+    /// <summary>
+    /// The game play.
+    /// </summary>
     public class GamePlay
     {
-        int playState;
+        /// <summary>
+        /// The play state.
+        /// </summary>
+        readonly int playState;
 
+        /// <summary>
+        /// The world.
+        /// </summary>
         World world;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GamePlay"/> class.
+        /// </summary>
         public GamePlay()
         {
-            playState = 0;
-            ResetWorld(null);
+            this.playState = 0;
+            this.ResetWorld(null);
         }
 
-        public virtual void ResetWorld(object info)
+        /// <summary>
+        /// The draw.
+        /// </summary>
+        public virtual void Draw()
         {
-            world = new World(ResetWorld);
-        }
-
-        public void Update()
-        {
-            if(playState == 0)
+            if (this.playState == 0)
             {
-                world.Update();
+                this.world.Draw(Vector2.Zero);
             }
         }
 
-        public virtual void Draw()
+        /// <summary>
+        /// The reset world.
+        /// </summary>
+        /// <param name="info">
+        /// The info.
+        /// </param>
+        public virtual void ResetWorld(object info)
         {
-            if (playState == 0)
+            this.world = new World(this.ResetWorld);
+        }
+
+        /// <summary>
+        /// The update.
+        /// </summary>
+        public void Update()
+        {
+            if (this.playState == 0)
             {
-                world.Draw(Vector2.Zero);
+                this.world.Update();
             }
         }
     }

@@ -1,43 +1,84 @@
-﻿#region Includes
-
-using Microsoft.Xna.Framework;
-
-#endregion
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
+    /// <summary>
+    /// The unit.
+    /// </summary>
     public class Unit : Basic2d
     {
-        public float Speed, HitDistance, Health, HealthMax;
+        /// <summary>
+        /// The dead.
+        /// </summary>
         public bool Dead;
 
-        public Unit(string path, Vector2 position, Vector2 dimensions) : base(path, position, dimensions)
-        {
-            Speed = 2.0f;
-            HitDistance = 30.0f;
+        /// <summary>
+        /// The speed.
+        /// </summary>
+        public float Speed, HitDistance, Health, HealthMax;
 
-            Health = 1;
-            HealthMax = Health;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Unit"/> class.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        /// <param name="position">
+        /// The position.
+        /// </param>
+        /// <param name="dimensions">
+        /// The dimensions.
+        /// </param>
+        public Unit(string path, Vector2 position, Vector2 dimensions)
+            : base(path, position, dimensions)
+        {
+            this.Speed = 2.0f;
+            this.HitDistance = 30.0f;
+
+            this.Health = 1;
+            this.HealthMax = this.Health;
         }
 
-        public virtual void GetHit(float damage)
-        {
-            Health -= damage;
-            
-            if(Health <= 0)
-            {
-                Dead = true;
-            }
-        }
-
-        public override void Update(Vector2 offset)
-        {
-            base.Update(offset);
-        }
-
+        /// <summary>
+        /// The draw.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
         public override void Draw(Vector2 offset)
         {
             base.Draw(offset);
+        }
+
+        /// <summary>
+        /// The get hit.
+        /// </summary>
+        /// <param name="damage">
+        /// The damage.
+        /// </param>
+        public virtual void GetHit(float damage)
+        {
+            this.Health -= damage;
+
+            if (this.Health <= 0)
+            {
+                this.Dead = true;
+            }
+        }
+
+        /// <summary>
+        /// The update.
+        /// </summary>
+        /// <param name="offset">
+        /// The offset.
+        /// </param>
+        public override void Update(Vector2 offset)
+        {
+            base.Update(offset);
         }
     }
 }

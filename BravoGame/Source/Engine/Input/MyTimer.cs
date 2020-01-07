@@ -1,99 +1,73 @@
-﻿using System;
-using System.Xml.Linq;
-
-namespace BravoGame
+﻿namespace BravoGame
 {
+    #region Usings
+
+    using System;
+
+    #endregion
+
+    /// <summary>
+    /// The my Timer.
+    /// </summary>
     public class MyTimer
     {
+        /// <summary>
+        /// The good to go.
+        /// </summary>
         public bool GoodToGo;
-        protected TimeSpan timer = new TimeSpan();
-        
+
+        /// <summary>
+        /// The Timer.
+        /// </summary>
+        protected TimeSpan Timer;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MyTimer"/> class.
+        /// </summary>
+        /// <param name="miliSeconds">
+        /// The mili seconds.
+        /// </param>
         public MyTimer(int miliSeconds)
         {
-            GoodToGo = false;
-            MiliSec = miliSeconds;
+            this.GoodToGo = false;
+            this.MiliSec = miliSeconds;
         }
 
-        public MyTimer(int miliSeconds, bool startloaded)
-        {
-            GoodToGo = startloaded;
-            MiliSec = miliSeconds;
-        }
-
+        /// <summary>
+        /// Gets or sets the mili sec.
+        /// </summary>
         public int MiliSec { get; set; }
 
-        public int Timer
+        /// <summary>
+        /// The reset to zero.
+        /// </summary>
+        public void ResetToZero()
         {
-            get { return (int)timer.TotalMilliseconds; }
+            this.Timer = TimeSpan.Zero;
+            this.GoodToGo = false;
         }
 
-        public void UpdateTimer()
-        {
-            timer += Globals.GameTime.ElapsedGameTime;
-        }
-
-        public void UpdateTimer(float speed)
-        {
-            timer += TimeSpan.FromTicks((long)(Globals.GameTime.ElapsedGameTime.Ticks * speed));
-        }
-
-        public virtual void AddToTimer(int msec)
-        {
-            timer += TimeSpan.FromMilliseconds(msec);
-        }
-
+        /// <summary>
+        /// The test.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool Test()
         {
-            if(timer.TotalMilliseconds >= MiliSec || GoodToGo)
+            if (this.Timer.TotalMilliseconds >= this.MiliSec || this.GoodToGo)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
-        public void Reset()
+        /// <summary>
+        /// The update Timer.
+        /// </summary>
+        public void UpdateTimer()
         {
-            timer = timer.Subtract(new TimeSpan(0, 0, MiliSec / 60000, MiliSec / 1000, MiliSec % 1000));
-            if(timer.TotalMilliseconds < 0)
-            {
-                timer = TimeSpan.Zero;
-            }
-            GoodToGo = false;
-        }
-
-        public void Reset(int newtimer)
-        {
-            timer = TimeSpan.Zero;
-            MiliSec = newtimer;
-            GoodToGo = false;
-        }
-
-        public void ResetToZero()
-        {
-            timer = TimeSpan.Zero;
-            GoodToGo = false;
-        }
-
-        public virtual XElement ReturnXML()
-        {
-            XElement xml= new XElement("Timer",
-                                    new XElement("mSec", MiliSec),
-                                    new XElement("timer", Timer));
-
-            return xml;
-        }
-
-        public void SetTimer(TimeSpan time)
-        {
-            timer = time;
-        }
-
-        public virtual void SetTimer(int msec)
-        {
-            timer = TimeSpan.FromMilliseconds(msec);
+            this.Timer += Globals.GameTime.ElapsedGameTime;
         }
     }
 }
